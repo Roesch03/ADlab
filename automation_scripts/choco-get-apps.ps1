@@ -2,7 +2,7 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
 # default apps
-choco install sysinternals firefox notepadplusplus winrar 7zip -y
+choco install sysinternals firefox notepadplusplus chrome 7zip -y
 
 
 $numOfArgs = $args.Length
