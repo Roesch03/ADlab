@@ -1,21 +1,16 @@
-# Expose Lab: Automated Active Directory Lab + Mini CTF Inside!
-
-<img src="exposelab.png">
+# Expose Lab: Automated Active Directory Lab
 
 ## Lab Overview 💻
 
-This lab is themed after TV series Mr. Robot :)
-This is a fully automated Active Directory Lab made with the purpose of reducing the hassle of creating it manually. It uses Vagrant and Powershell Scripts to automate stuff. It also contain a small CTF kind of senerio.
+This is a fully automated Active Directory Lab made with the purpose of reducing the hassle of creating it manually. It uses Vagrant and Powershell Scripts to automate stuff.
 
 #### Lab preinstalled
 - Active directory Services.
-- Chocholotary (firefox, 7zip, Notepad++ ).
+- Chocholotary (firefox, chrome, Notepad++ ).
 - Internal Network (for Tunnelling practice).
 - sysinternals installed on every system.
 
-<img src="lab.png">
-
-### Installation Script by [@Lavender-exe](https://github.com/Lavender-exe)
+### Installation Script by [@Ashifcoder](https://github.com/Ashifcoder/exposelab)
 separately ⚠
 *Tested on Ubuntu LTS 22.04*
 ```bash
@@ -119,16 +114,6 @@ Note: If IP address configuration allowed range Error occurs. Run the commands f
 ```sh
 vagrant : vagrant 
 ```
-
-Other Users on the Lab
-
-User |  Machine | 
---|--|
-mrrobot | RootDC
-Angela | WebServer
-Darlene | Windows Client 1
-Tyrell | Windows Client 2
-Elliot | N0t-F0uND
 
 ---
 
