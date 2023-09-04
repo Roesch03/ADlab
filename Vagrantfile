@@ -25,7 +25,7 @@ Vagrant.configure("2") do |cfg|
       config.vm.provision "shell", inline: "Remove-WindowsFeature Windows-Defender"
       config.vm.provision "shell", inline: "Write-Host -ForegroundColor Green Installing ad-domain-services ; install-windowsfeature -name 'ad-domain-services' -includemanagementtools"
       config.vm.provision "shell", reboot: true
-      config.vm.provision "shell", path: "automation_scripts/Install-ADDSForest.ps1", privileged: true, args: " -localAdminpass P@ssworD123 -domainName evilcorp.local -domainNetbiosName evilcorp"
+      config.vm.provision "shell", path: "automation_scripts/Install-ADDSForest.ps1", privileged: true, args: " -localAdminpass P@ssworD123 -domainName pixl.com -domainNetbiosName pixl"
       config.vm.provision "shell", inline: "Start-Sleep -s 180"
       config.vm.provision "shell", reboot: true
       config.vm.provision "shell", inline: "Start-Sleep -s 60"
@@ -55,9 +55,9 @@ Vagrant.configure("2") do |cfg|
       config.vm.provision "shell", reboot: true
       config.vm.provision "shell", inline: "foreach ($c in Get-NetAdapter) { write-host 'Setting DNS for' $c.interfaceName ; Set-DnsClientServerAddress -InterfaceIndex $c.interfaceindex -ServerAddresses ('10.10.10.3', '10.10.10.3') }" 
       config.vm.provision "shell", inline: "Write-Host -ForegroundColor Green ; Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False" , privileged: true
-      config.vm.provision "shell", path: "automation_scripts/join-domain.ps1", privileged: true, args: "-Password  P@ssworD123 -user Administrator -domain evilcorp.local" 
+      config.vm.provision "shell", path: "automation_scripts/join-domain.ps1", privileged: true, args: "-Password  P@ssworD123 -user Administrator -domain pixl.com" 
       config.vm.provision "shell", reboot: true
-      config.vm.provision "shell", path: "automation_scripts/Add-Aduser-to-localgroup.ps1", privileged: true, args: "-adduser eliot -group_add Administrators -domain 'evilcorp.local'"
+      config.vm.provision "shell", path: "automation_scripts/Add-Aduser-to-localgroup.ps1", privileged: true, args: "-adduser eliot -group_add Administrators -domain 'pixl.com'"
       config.vm.provision "shell", path: "automation_scripts/Add-LocalUser.ps1", privileged: true, args: "-adduser tryell -password WinClient123 -group_add Administrators"
       config.vm.provision "shell", path: "automation_scripts/choco-get-apps.ps1", privileged: true, args: "vlc python3" # choco Script with Addidional Argutmet
       config.vm.provision "shell", inline: "Write-Host -ForegroundColor Green [+] Workstation-02 Box Creation Over!"
@@ -99,11 +99,11 @@ Vagrant.configure("2") do |cfg|
         config.vm.provision "shell", reboot: true
         config.vm.provision "shell", inline: "foreach ($c in Get-NetAdapter) { write-host 'Setting DNS for' $c.interfaceName ; Set-DnsClientServerAddress -InterfaceIndex $c.interfaceindex -ServerAddresses ('10.10.10.3', '10.10.10.3') }"
         config.vm.provision "shell", inline: "Write-Host -ForegroundColor Green Turn of Firewall ; Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False" , privileged: true
-        config.vm.provision "shell", path: "automation_scripts/join-domain.ps1", privileged: true, args: "-Password  P@ssworD123 -user Administrator -domain evilcorp.local" 
+        config.vm.provision "shell", path: "automation_scripts/join-domain.ps1", privileged: true, args: "-Password  P@ssworD123 -user Administrator -domain pixl.com" 
         config.vm.provision "shell", reboot: true
         config.vm.provision "shell", path: "automation_scripts/Add-LocalUser.ps1", privileged: true, args: "-adduser darlene -password W!nclient321 -group_add Administrators"
         config.vm.provision "shell", reboot: true
-        config.vm.provision "shell", path: "automation_scripts/Add-Aduser-to-localgroup.ps1", privileged: true, args: "-adduser eliot -group_add Administrators -domain 'evilcorp.local'"
+        config.vm.provision "shell", path: "automation_scripts/Add-Aduser-to-localgroup.ps1", privileged: true, args: "-adduser eliot -group_add Administrators -domain 'pixl.com'"
         config.vm.provision "shell", path: "automation_scripts/choco-get-apps.ps1", privileged: true, args: "netcat"
         config.vm.provision "shell", inline: "Write-Host -ForegroundColor Green [+] Workstation-01 Box Creation Over!"
   
