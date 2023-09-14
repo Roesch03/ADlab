@@ -4,7 +4,8 @@ Vagrant.configure("2") do |cfg|
   
     cfg.vm.define "rootdomaincontroller" do |config|
       config.vm.box = "StefanScherer/windows_2019"
-      config.vm.network "private_network", ip:  "10.10.10.3" 
+      config.vm.network "private_network", ip:  "10.10.10.3"
+      config.vm.network "public_network", type:  "dhcp", dns_nameserver: "9.9.9.9"
       config.winrm.transport = :plaintext
       config.winrm.basic_auth_only = true
       config.winrm.retry_limit = 120
@@ -29,6 +30,7 @@ Vagrant.configure("2") do |cfg|
       config.vm.provision "shell", inline: "Start-Sleep -s 180"
       config.vm.provision "shell", reboot: true
       config.vm.provision "shell", inline: "Start-Sleep -s 60"
+      config.vm.provision "shell", path: "automation_scripts/Set-DNS-Server.ps1" #new
       config.vm.provision "shell", path: "automation_scripts/New-ADOUs-ADUsers.ps1" #new
   
       config.vm.provision "shell", inline: "Write-Host -ForegroundColor Green [+] RootDC Box Creation Over!"
@@ -37,7 +39,7 @@ Vagrant.configure("2") do |cfg|
   # The workstation 2
     cfg.vm.define "workstation2" do |config| 
       config.vm.box = "StefanScherer/windows_10"
-      config.vm.network "private_network", ip:  "10.10.10.102" 
+      config.vm.network "private_network", ip:  "10.10.10.102"
       config.vm.boot_timeout = 1800
       config.winrm.transport = :plaintext
       config.winrm.basic_auth_only = true
